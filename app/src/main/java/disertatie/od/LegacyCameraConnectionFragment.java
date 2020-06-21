@@ -1,6 +1,7 @@
 package disertatie.od;
 
 
+import android.annotation.SuppressLint;
 import android.app.Fragment;
 import android.graphics.SurfaceTexture;
 import android.hardware.Camera;
@@ -8,6 +9,7 @@ import android.hardware.Camera.CameraInfo;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.HandlerThread;
+import android.util.Log;
 import android.util.Size;
 import android.util.SparseIntArray;
 import android.view.LayoutInflater;
@@ -15,12 +17,15 @@ import android.view.Surface;
 import android.view.TextureView;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+
 import java.io.IOException;
 import java.util.List;
 import disertatie.od.customview.AutoFitTextureView;
 import disertatie.od.env.ImageUtils;
 import disertatie.od.env.Logger;
 
+@SuppressLint("ValidFragment")
 public class LegacyCameraConnectionFragment extends Fragment {
   private static final Logger LOGGER = new Logger();
   /** Conversion from screen rotation to JPEG orientation. */
@@ -101,6 +106,7 @@ public class LegacyCameraConnectionFragment extends Fragment {
   /** An additional thread for running tasks that shouldn't block the UI. */
   private HandlerThread backgroundThread;
 
+  @SuppressLint("ValidFragment")
   public LegacyCameraConnectionFragment(
       final Camera.PreviewCallback imageListener, final int layout, final Size desiredSize) {
     this.imageListener = imageListener;
@@ -132,7 +138,6 @@ public class LegacyCameraConnectionFragment extends Fragment {
     // available, and "onSurfaceTextureAvailable" will not be called. In that case, we can open
     // a camera and start preview from here (otherwise, we wait until the surface is ready in
     // the SurfaceTextureListener).
-
     if (textureView.isAvailable()) {
       camera.startPreview();
     } else {

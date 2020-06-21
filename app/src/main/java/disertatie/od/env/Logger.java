@@ -1,5 +1,6 @@
 package disertatie.od.env;
 
+import android.annotation.SuppressLint;
 import android.util.Log;
 import java.util.HashSet;
 import java.util.Set;
@@ -109,60 +110,70 @@ public final class Logger {
     return messagePrefix + (args.length > 0 ? String.format(format, args) : format);
   }
 
+  @SuppressLint("LogTagMismatch")
   public void v(final String format, final Object... args) {
     if (isLoggable(Log.VERBOSE)) {
       Log.v(tag, toMessage(format, args));
     }
   }
 
+  @SuppressLint("LogTagMismatch")
   public void v(final Throwable t, final String format, final Object... args) {
     if (isLoggable(Log.VERBOSE)) {
       Log.v(tag, toMessage(format, args), t);
     }
   }
 
+  @SuppressLint("LogTagMismatch")
   public void d(final String format, final Object... args) {
     if (isLoggable(Log.DEBUG)) {
       Log.d(tag, toMessage(format, args));
     }
   }
 
+  @SuppressLint("LogTagMismatch")
   public void d(final Throwable t, final String format, final Object... args) {
     if (isLoggable(Log.DEBUG)) {
       Log.d(tag, toMessage(format, args), t);
     }
   }
 
+  @SuppressLint("LogTagMismatch")
   public void i(final String format, final Object... args) {
     if (isLoggable(Log.INFO)) {
       Log.i(tag, toMessage(format, args));
     }
   }
 
+  @SuppressLint("LogTagMismatch")
   public void i(final Throwable t, final String format, final Object... args) {
     if (isLoggable(Log.INFO)) {
       Log.i(tag, toMessage(format, args), t);
     }
   }
 
+  @SuppressLint("LogTagMismatch")
   public void w(final String format, final Object... args) {
     if (isLoggable(Log.WARN)) {
       Log.w(tag, toMessage(format, args));
     }
   }
 
+  @SuppressLint("LogTagMismatch")
   public void w(final Throwable t, final String format, final Object... args) {
     if (isLoggable(Log.WARN)) {
       Log.w(tag, toMessage(format, args), t);
     }
   }
 
+  @SuppressLint("LogTagMismatch")
   public void e(final String format, final Object... args) {
     if (isLoggable(Log.ERROR)) {
       Log.e(tag, toMessage(format, args));
     }
   }
 
+  @SuppressLint("LogTagMismatch")
   public void e(final Throwable t, final String format, final Object... args) {
     if (isLoggable(Log.ERROR)) {
       Log.e(tag, toMessage(format, args), t);

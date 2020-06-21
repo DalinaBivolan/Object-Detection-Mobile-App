@@ -1,4 +1,7 @@
 <resources>
     <string name="tfe_od_app_name" translation_description="Object Detection app [CHAR_LIMIT=40]">OD</string>
     <string name="tfe_od_camera_error" translation_description="Error regarding camera support[CHAR_LIMIT=40]">This device doesn\'t support Camera2 API.</string>
+    <string name="buttonRT_text">Real-Time Detection</string>
+    <string name="buttonImage_text">Image Detection</string>
+    <string name="galleryButton_text">Open Image</string>
 </resources>
