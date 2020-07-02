@@ -5,6 +5,9 @@ import android.content.res.AssetManager;
 import android.graphics.Bitmap;
 import android.graphics.RectF;
 import android.os.Trace;
+
+import org.tensorflow.lite.Interpreter;
+
 import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -19,7 +22,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Vector;
-import org.tensorflow.lite.Interpreter;
+
 import disertatie.od.env.Logger;
 
 public class TFLiteObjectDetectionAPIModel implements Classifier {
@@ -189,7 +192,7 @@ public class TFLiteObjectDetectionAPIModel implements Classifier {
               outputLocations[0][i][0] * inputSize,
               outputLocations[0][i][3] * inputSize,
               outputLocations[0][i][2] * inputSize);
-      // SSD Mobilenet V1 Model assumes class 0 is background class
+      // SSD Mobilenet V2 Model assumes class 0 is background class
       // in label file and class labels start from 1 to number_of_classes+1,
       // while outputClasses correspond to class index from 0 to number_of_classes
       int labelOffset = 1;
@@ -199,10 +202,22 @@ public class TFLiteObjectDetectionAPIModel implements Classifier {
               labels.get((int) outputClasses[0][i] + labelOffset),
               outputScores[0][i],
               detection));
+      /*final int classLabel = (int) outputClasses[0][i] + labelOffset;
+             if (inRange(classLabel, labels.size(), 0) && inRange(outputScores[0][i], 1, 0)) {
+                  recognitions.add(
+                                   new Recognition(
+                                                   "" + i,
+                                                   labels.get(classLabel),
+                                                   outputScores[0][i],
+                                                   detection));
+             }*/
     }
     Trace.endSection(); // "recognizeImage"
     return recognitions;
   }
+  /*private boolean inRange(float number, float max, float min) {
+       return number < max && number >= min;
+     }*/
 
   @Override
   public void enableStatLogging(final boolean logStats) {}

@@ -1,0 +1,16 @@
+person
+bicycle
+cat
+dog
+cup
+banana
+apple
+chair
+couch
+dining table
+tv
+laptop
+oven
+refrigerator
+book
+???

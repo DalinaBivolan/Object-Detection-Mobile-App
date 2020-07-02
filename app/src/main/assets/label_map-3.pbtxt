@@ -1,0 +1,74 @@
+item {
+    id: 1
+    name: 'apple'
+}
+
+item {
+    id: 2
+    name: 'banana'
+}
+
+item {
+    id: 3
+    name: 'bicycle'
+}
+
+item {
+    id: 4
+    name: 'book'
+}
+
+item {
+    id: 5
+    name: 'cat'
+}
+
+item {
+    id: 6
+    name: 'chair'
+}
+
+item {
+    id: 7
+    name: 'couch'
+}
+
+item {
+    id: 8
+    name: 'cup'
+}
+
+item {
+    id: 9
+    name: 'dining table'
+}
+
+item {
+    id: 10
+    name: 'dog'
+}
+
+item {
+    id: 11
+    name: 'laptop'
+}
+
+item {
+    id: 12
+    name: 'oven'
+}
+
+item {
+    id: 13
+    name: 'person'
+}
+
+item {
+    id: 14
+    name: 'refrigerator'
+}
+
+item {
+    id: 15
+    name: 'tv'
+}

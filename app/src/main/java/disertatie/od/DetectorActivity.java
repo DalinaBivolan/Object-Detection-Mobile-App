@@ -186,7 +186,7 @@ public class DetectorActivity extends CameraActivity implements OnImageAvailable
 
             for (final Classifier.Recognition result : results) {
               final RectF location = result.getLocation();
-              if (location != null && result.getConfidence() >= minimumConfidence) {
+              if (location != null && result.getConfidence() >= minimumConfidence && !result.getTitle().equals("???")) {
                 canvas.drawRect(location, paint);
 
                 cropToFrameTransform.mapRect(location);
@@ -224,8 +224,7 @@ public class DetectorActivity extends CameraActivity implements OnImageAvailable
     return DESIRED_PREVIEW_SIZE;
   }
 
-  // Which detection model to use: by default uses Tensorflow Object Detection API frozen
-  // checkpoints.
+  // Which detection model to use
   private enum DetectorMode {
     TF_OD_API;
   }

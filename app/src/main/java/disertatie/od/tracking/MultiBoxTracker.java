@@ -12,9 +12,11 @@ import android.graphics.RectF;
 import android.text.TextUtils;
 import android.util.Pair;
 import android.util.TypedValue;
+
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
+
 import disertatie.od.env.BorderedText;
 import disertatie.od.env.ImageUtils;
 import disertatie.od.env.Logger;
@@ -120,22 +122,24 @@ public class MultiBoxTracker {
             sensorOrientation,
             false);
     for (final TrackedRecognition recognition : trackedObjects) {
-      final RectF trackedPos = new RectF(recognition.location);
+      if(!TextUtils.equals(recognition.title, "???")) {
+        final RectF trackedPos = new RectF(recognition.location);
 
-      getFrameToCanvasMatrix().mapRect(trackedPos);
-      boxPaint.setColor(recognition.color);
+        getFrameToCanvasMatrix().mapRect(trackedPos);
+        boxPaint.setColor(recognition.color);
 
-      float cornerSize = Math.min(trackedPos.width(), trackedPos.height()) / 8.0f;
-      canvas.drawRoundRect(trackedPos, cornerSize, cornerSize, boxPaint);
+        float cornerSize = Math.min(trackedPos.width(), trackedPos.height()) / 8.0f;
+        canvas.drawRoundRect(trackedPos, cornerSize, cornerSize, boxPaint);
 
-      final String labelString =
-          !TextUtils.isEmpty(recognition.title)
-              ? String.format("%s %.2f", recognition.title, (100 * recognition.detectionConfidence))
-              : String.format("%.2f", (100 * recognition.detectionConfidence));
-      //            borderedText.drawText(canvas, trackedPos.left + cornerSize, trackedPos.top,
-      // labelString);
-      borderedText.drawText(
-          canvas, trackedPos.left + cornerSize, trackedPos.top, labelString + "%", boxPaint);
+        final String labelString =
+                !TextUtils.isEmpty(recognition.title)
+                        ? String.format("%s %.2f", recognition.title, (100 * recognition.detectionConfidence))
+                        : String.format("%.2f", (100 * recognition.detectionConfidence));
+        //            borderedText.drawText(canvas, trackedPos.left + cornerSize, trackedPos.top,
+        // labelString);
+        borderedText.drawText(
+                canvas, trackedPos.left + cornerSize, trackedPos.top, labelString + "%", boxPaint);
+      }
     }
   }
 
